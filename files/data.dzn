@@ -1,0 +1,8 @@
+% Data
+%  data.dzn
+
+n = 5;
+PotentialReaders = [1500, 2000, 1000, 1500, 750];
+MinTopicPages = [5, 4, 2, 2, 1];
+MaxTopicPages = [9, 7, 5, 4, 3];
+NewspaperTotalPages = 10;
