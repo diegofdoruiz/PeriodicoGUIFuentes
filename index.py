@@ -88,6 +88,7 @@ class Periodico:
 
 	# List Inputs
 	def list_inputs(self):
+		#Toma los datos que estan guardados en el diccionario para mostrarlos
 		records = self.tree.get_children()
 		for element in records:
 			self.tree.delete(element)
@@ -121,6 +122,7 @@ class Periodico:
 			except ValueError:
 				self.message['text'] = 'Potential readers is not a number'
 				return
+			#Toma los datos de la intefaz y se guarda cada entrada en un json	
 			self.createfile.setInputs(topic, min_p, max_p, pot_r)
 			self.message['text'] = 'Input {} added Succesfully'.format(self.topic.get())
 			self.list_inputs()
@@ -255,8 +257,7 @@ class Periodico:
 		n_inc_rows = 0
 		for inpu in inputs:
 			if array_x[iterator] == 'true':
-				readers = readers + int(inputs[inpu]['potential_readers_per_page'])
-				readers = readers * int(array_pages_x[iterator])
+				readers = readers + int(inputs[inpu]['potential_readers_per_page']) * int(array_pages_x[iterator])
 				text = '- '+inputs[inpu]['topic'] +': '+ array_pages_x[iterator] + ' pages'
 				Label(frame3, text = text, fg = 'blue').grid(row = inc_rows, column = 0, sticky= W)
 				inc_rows = inc_rows + 1
