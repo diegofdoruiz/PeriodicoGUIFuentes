@@ -27,6 +27,7 @@ class CreateFile(object):
 
 	# Add new input to dict
 	def setInputs(self, topic, min_p, max_p, pot_r):
+		#Inputs es un diccionario. Guarda cada valor a medida que se entrega en la interfaz
 		new_input = {}
 		new_input['topic'] = topic
 		new_input['min_number_of_pages'] = min_p
@@ -46,6 +47,7 @@ class CreateFile(object):
 		self.file.write("\n")
 
 		# n topics
+		#Escribe en el archivo data.dzn
 		self.file.write("n = "+str(len(self.inputs))+";\n");
 
 		# potential readers per page
@@ -88,6 +90,7 @@ class CreateFile(object):
 
 	# Solve with minizinc and write in out.txt
 	def solve(self):
+		#Prepara los datos para visualizar en la interfaz y escribir en el archivo de salida
 		command = self.minizinc_path + ' --solver Gecode files/model.mzn files/data.dzn > files/out.txt'
 		os.system(command)
 
@@ -115,6 +118,7 @@ class CreateFile(object):
 		file_out.close()
 
 		# clean results line_x only: false, true, false, ...
+		#Limpia los resultados
 		self.line_x = self.line_x[19:-4]
 
 		# clean results line_pages_x only: 5, 7, 2, ....
